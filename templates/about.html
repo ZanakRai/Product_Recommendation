@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Product Online Shopping</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><i class="fas fa-shopping-bag"></i> Online Shoping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who We Are</h3>
+                    <p>
+                        We are a leading e-commerce platform dedicated to providing the best shopping experience 
+                        with personalized product recommendations using advanced AI and machine learning algorithms.
+                    </p>
+                    <p>
+                        Our mission is to help customers discover products they love through intelligent recommendations, 
+                        making shopping easier and more enjoyable.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-robot"></i>
+                        <h4>AI Powered</h4>
+                        <p>Smart recommendations using machine learning</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h4>Fast Delivery</h4>
+                        <p>Quick and reliable shipping to your doorstep</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Secure Shopping</h4>
+                        <p>100% secure payment and data protection</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h4>24/7 Support</h4>
+                        <p>Always ready to help with your questions</p>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <h3 id="productCount">0</h3>
+                        <p>Products</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50K+</h3>
+                        <p>Happy Customers</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100+</h3>
+                        <p>Categories</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Product Online Shopping. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Load product count on about page
+        async function loadStats() {
+            try {
+                const response = await fetch('http://localhost:8000/api/products/');
+                const data = await response.json();
+                document.getElementById('productCount').textContent = data.length;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+        loadStats();
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Product Online Shopping</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><i class="fas fa-shopping-bag"></i> Online Shopping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Page Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">All Products</h2>
+            <p class="section-subtitle">Browse our complete collection of products</p>
+            
+            <div class="filters">
+                <input type="text" id="searchInput" placeholder="Search products..." class="search-box">
+                <select id="categoryFilter" class="category-filter">
+                    <option value="">All Categories</option>
+                </select>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <div class="loading">Loading products...</div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <div class="product-detail">
+                    <img id="modalImage" src="" alt="Product">
+                    <div class="product-info">
+                        <h2 id="modalName"></h2>
+                        <p class="category" id="modalCategory"></p>
+                        <p class="description" id="modalDescription"></p>
+                        <div class="price-section">
+                            <span class="price" id="modalPrice"></span>
+                            <button class="btn btn-primary" onclick="addToCart()">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similar Products -->
+                <div class="similar-products">
+                    <h3>Similar Products</h3>
+                    <div class="similar-grid" id="similarGrid">
+                        <p>Loading similar products...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Product Online Shopping. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Initialize products page
+       /** document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            setupEventListeners();
+        });**/
+    </script>
+</body>
+</html>
